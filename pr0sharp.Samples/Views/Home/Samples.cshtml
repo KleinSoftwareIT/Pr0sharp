@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Sample Overview";
+}
+@model OverviewViewModel
+
+<h1>@ViewData["Title"]</h1>
+
+<p>You are authenticated with pr0gramm username <b>@Model.Username</b>. Not the right account? <a asp-action="Logout" asp-controller="Oauth">Logout</a></p>
+
+<h2>Introduction</h2>
+<p>Welcome to the sample section for pr0sharp. Below is a list of all available samples, grouped by category. To use a sample, simply click its respective link. Some samples are interactive, while others do their job and display the result afterward</p>
+
+<div style="margin: 8px; padding: 8px; border: 4px solid red; font: bold; color: darkred">
+    <h1>Warning</h1>
+    <p>As stated in the readme, some samples can potentially alter things on your pr0gramm account. Those samples are grouped and marked explicitly. Please use the samples with utmost care. Changes done via samples can not be reversed unless you manually take the necessary actions do undo them by yourself</p>
+    <p>YOU HAVE BEEN WARNED!</p>
+</div>
+
+<h2>Available Samples</h2>
+<ul>
+    <li>
+        Userdata Samples (non-destructive)
+        <ol>
+            <li><a asp-action="GetUsername" asp-controller="Samples">Retrieve username of currently authenticated user</a></li>
+            <li><a asp-action="GetUserMe" asp-controller="Samples">Retrieve details of currently authenticated user</a></li>
+            <li><a asp-action="GetUserInfo" asp-controller="Samples">Retrieve more details of currently authenticated user</a></li>
+        </ol>
+    </li>
+</ul>

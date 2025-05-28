@@ -1,0 +1,9 @@
+@using pr0sharp.Responses
+@{
+    ViewData["Title"] = "GetUsername Sample";
+}
+@model UserNameResponse
+
+<h1>Results of endpoint /user/name</h1>
+<p>Username of the currently authenticated user: @Model.Name</p>
+<a asp-action="Index" asp-controller="Home">Back to start</a>

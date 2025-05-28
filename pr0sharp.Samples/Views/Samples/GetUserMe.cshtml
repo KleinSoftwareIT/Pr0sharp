@@ -1,0 +1,18 @@
+@using pr0sharp.Responses
+@{
+    ViewData["Title"] = "GetUserMe Sample";
+}
+@model UserMeResponse
+<h1>Results for endpoint /user/me</h1>
+<h2>General properties</h2>
+<p>Username of the currently authenticated user: @Model.Name</p>
+<p>Registration Date: @Model.RegistrationDate</p>
+<p>Identifier: @Model.Identifier</p>
+<p>Rank on pr0gramm.com: @Model.Rank</p>
+<p>Current Benis: @Model.Benis</p>
+<p>Subscribed Until: @Model.SubscribedUntil</p>
+
+<h2>BanInfo</h2>
+<p>Is banned: @Model.BanInfo.IsBanned</p>
+<p>Banned Until: @(Model.BanInfo.BannedUntil == null ? "no time given" : Model.BanInfo.BannedUntil)</p>
+<a asp-action="Index" asp-controller="Home">Back to start</a>

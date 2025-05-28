@@ -1,6 +1,6 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using pr0sharp.Samples.Models;
-using System.Diagnostics;
 
 namespace pr0sharp.Samples.Controllers
 {
@@ -13,20 +13,18 @@ namespace pr0sharp.Samples.Controllers
             _logger = logger;
         }
 
+        [HttpGet("")]
         public IActionResult Index()
         {
-            return View();
-        }
+            if (User.Identity!.IsAuthenticated)
+            {
+                return View("Samples", new OverviewViewModel() { Username = User.Identity.Name! });
+            }
 
-        public IActionResult Privacy()
-        {
-            return View();
+            return View("Login");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

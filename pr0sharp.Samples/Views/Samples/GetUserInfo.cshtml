@@ -1,0 +1,168 @@
+@using pr0sharp.Responses
+@{
+    ViewData["Title"] = "GetUserInfo Sample";
+}
+@model UserInfoResponse
+
+<h1>Results of endpoint /user/info</h1>
+<h2>General properties</h2>
+<p>Number of invited Users: @Model.InvitedUsers.Count</p>
+@if (Model.InvitedUsers.Any())
+{
+    <p>Invited users and details of them:</p>
+    <ol>
+        @foreach (var invitedUser in Model.InvitedUsers)
+        {
+            <li>
+                <p><b>@invitedUser.Name</b></p>
+                <p>Id: @invitedUser.Id</p>
+                <p>Rank: @invitedUser.Rank</p>
+                <p>Email: @invitedUser.Email</p>
+                <p>Registration date: @invitedUser.RegistrationDate</p>
+            </li>
+        }
+    </ol>
+}
+<p>Invites detached: @Model.InvitesDetached</p>
+<p>Invites remaining: @Model.InvitesRemaining</p>
+<p>Number of payments: @Model.NumberOfPayments</p>
+<p>Number of collections: @Model.CuratorCollections.Count</p>
+@if (Model.CuratorCollections.Any())
+{
+    <p>Collections and details of them:</p>
+    <ol>
+        @foreach (var collection in Model.CuratorCollections)
+        {
+            <li>
+                <p><b>@collection.Name</b></p>
+                <p>Id: @collection.Id</p>
+                <p>Owner: @collection.Owner</p>
+                <p>Owner rank: @collection.OwnerRank</p>
+                <p>Slug: @collection.Slug</p>
+                <p>Invite status: @collection.InvitationStatus</p>
+            </li>
+        }
+    </ol>
+}
+
+<p>Number of authorized apps: @Model.AuthorizedApps.Count</p>
+@if (Model.AuthorizedApps.Any())
+{
+    <p>Authorized apps and details of them:</p>
+    <ol>
+        @foreach (var authorizedApp in Model.AuthorizedApps)
+        {
+            <li>
+                <p><b>@authorizedApp.Name</b></p>
+                <p>Url: @authorizedApp.Url</p>
+                <p>Logo Url: @authorizedApp.Logo</p>
+                <p>ClientId: @authorizedApp.ClientId</p>
+                <p>Description: @authorizedApp.Description</p>
+                <p>Number of requested scopes: @authorizedApp.Scopes.Length</p>
+                @if (authorizedApp.Scopes.Any())
+                {
+                    <p>
+                        Requested scopes:
+                        <ol>
+                            @foreach (var scope in authorizedApp.Scopes)
+                            {
+                                <li>
+                                    <p><b>@scope.Name</b></p>
+                                    <p>@scope.Description</p>
+                                </li>
+                            }
+                        </ol>
+                    </p>
+                }
+                <p>App owner details:
+                    <ul>
+                        <li>Name: <b>@authorizedApp.Owner.Name</b></li>
+                        <li>Rank: @authorizedApp.Owner.Rank</li>
+                    </ul>
+                </p>
+            </li>
+        }
+    </ol>
+}
+<p>Number of promoted apps: @Model.PromotedApps.Count</p>
+@if (Model.PromotedApps.Any())
+{
+    <p>Promoted apps and details of them:</p>
+    <ol>
+        @foreach (var promotedApp in Model.PromotedApps)
+        {
+            <li>
+                <p><b>@promotedApp.Name</b></p>
+                <p>Url: @promotedApp.Url</p>
+                <p>Logo Url: @promotedApp.Logo</p>
+                <p>Description: @promotedApp.Description</p>
+                <p>
+                    App owner details:
+                    <ul>
+                        <li>Name: <b>@promotedApp.Owner.Name</b></li>
+                        <li>Rank: @promotedApp.Owner.Rank</li>
+                    </ul>
+                </p>
+            </li>
+        }
+    </ol>
+}
+<p>Has daily digests activated: @Model.DigestsSettings.DailyDigestEnabled</p>
+<p>Has weekly digests activated: @Model.DigestsSettings.WeeklyDigestEnabled</p>
+<p>Has email notifications activated: @Model.EmailNotificationsEnabled</p>
+<p>Current background id: @(Model.ProfileBackgroundSettings.Current == null ? "none" : Model.ProfileBackgroundSettings.Current)</p>
+@if (Model.ProfileBackgroundSettings.AvailableBackgrounds.Any())
+{
+    <p>Available backgrounds and details of them:</p>
+    <ol>
+        @foreach (var availableBackground in Model.ProfileBackgroundSettings.AvailableBackgrounds)
+        {
+            <li>
+                <p><b>@availableBackground.DisplayName</b></p>
+                <p>Id: @availableBackground.Id</p>
+                <p>Small Image Url: @availableBackground.SmallImageUrl</p>
+                <p>Description: @availableBackground.Description</p>
+                <p>Is common background: @availableBackground.IsCommon</p>
+            </li>
+        }
+    </ol>
+}
+<p>Can change username: @Model.CanChangeName</p>
+<p>Date of last name change: @Model.LastNameChangeDate</p>
+<p>User invite eligibility data:
+    <ul>
+        <li>Current Invites: @Model.UserInviteEligibilityData.CurrentInvites</li>
+        <li>Invites forbidden: @Model.UserInviteEligibilityData.InvitesForbidden</li>
+        <li>Total number of comments: @Model.UserInviteEligibilityData.Comments</li>
+        <li>Total number of uploads: @Model.UserInviteEligibilityData.Uploads</li>
+        <li>Total number of comments last 180 days: @Model.UserInviteEligibilityData.Comments180</li>
+        <li>Total number of uploads last 180 days: @Model.UserInviteEligibilityData.Uploads180</li>
+        <li>Number of votes: @Model.UserInviteEligibilityData.Votes</li>
+        <li>Minimum account age reached: @Model.UserInviteEligibilityData.MinimumAccountAgeReached</li>
+    </ul>
+</p>
+<p>
+    General invite eligibility data:
+    <ul>
+        <li>Can invite: @Model.GeneralInviteEligibilityData.CanInvite</li>
+        <li>Current invites (current/max): @Model.GeneralInviteEligibilityData.CurrentInvites.Current of @Model.GeneralInviteEligibilityData.CurrentInvites.Max</li>
+        <li>Total comments (current/required): @Model.GeneralInviteEligibilityData.TotalComments.Current of @Model.GeneralInviteEligibilityData.TotalComments.Required</li>
+        <li>Total comments last 180 days (current/required): @Model.GeneralInviteEligibilityData.CommentsWindow180.Current of @Model.GeneralInviteEligibilityData.CommentsWindow180.Required</li>
+        <li>Total uploads (current/required): @Model.GeneralInviteEligibilityData.TotalUploads.Current of @Model.GeneralInviteEligibilityData.TotalUploads.Required</li>
+        <li>Total uploads last 180 days (current/required): @Model.GeneralInviteEligibilityData.UploadsWindow180.Current of @Model.GeneralInviteEligibilityData.UploadsWindow180.Required</li>
+        <li>Benis: @Model.GeneralInviteEligibilityData.BenisRequired.Current of @Model.GeneralInviteEligibilityData.BenisRequired.Required</li>
+        <li>Next invitation round date: @Model.GeneralInviteEligibilityData.NextRoundDate</li>
+    </ul>
+</p>
+
+<h2>AccountInfo</h2>
+<p>Has public likes: @Model.AccountInfo.LikesArePublic</p>
+<p>Device Mail: @Model.AccountInfo.DeviceMail</p>
+<p>Email: @Model.AccountInfo.Email</p>
+<p>Available Invites: @Model.AccountInfo.AvailableInvites</p>
+<p>Is invited: @Model.AccountInfo.IsInvited</p>
+<p>Rank: @Model.AccountInfo.Rank</p>
+<p>Default rank: @Model.AccountInfo.DefaultRank</p>
+<p>Paid until: @Model.AccountInfo.PaidUntil</p>
+<p>Has beta access: @Model.AccountInfo.HasBetaAccess</p>
+<a asp-action="Index" asp-controller="Home">Back to start</a>
