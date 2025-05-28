@@ -1,5 +1,5 @@
-# Pr0sharp - C# pr0gramm.com API library
-Pr0sharp (alternative title Pr0#) is an implementation of the API provided by the german imageboard [pr0gramm.com](https://pr0gramm.com) written purely in C#.
+# pr0sharp - C# pr0gramm.com API library
+pr0sharp (alternative title pr0#) is an implementation of the API provided by the german imageboard [pr0gramm.com](https://pr0gramm.com) written purely in C#.
 The library was born due to being necessary for the still ongoing project keyb0x.pro to handle auth and other functionality.
 
 Licensed under MIT, the librarys goal is to allow quick and comfortable access to all API endpoints.
