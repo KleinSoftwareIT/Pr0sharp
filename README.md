@@ -24,6 +24,14 @@ After somehow getting the library referenced in your project, these are the next
 3. Create a new instance of `pr0sharp.Pr0grammApiClient` and pass the obtained `AccessToken` as part of the constructor. The client will now configure everything necessary to successfully call any API endpoint (in accordance with the requested scopes, which will not be checked by the client)
 4. Call any provided method, passing required arguments. If everything is done correctly, the respective response object will hold the requested data for further processing
 
+# How to use the samples
+
+1. Clone the repository
+1. Get client credentials to use for the API. Refer to the above section on how to get those
+1. Add the ClientID and the ClientSecret to `appsettings.development.json` (alternatively, you can add them to `appsettings.json` but take care to not commit the file with credentials in place, they have to remain secret)
+1. Run the Sample project, either via your IDE or on the command line via `dotnet run` while being in the `pr0sharp.Samples` directory.
+1. Your browser should now open where you can login with pr0gramm using your account. **Notice that every action you take on the samples can potentially affect the pr0gramm.com account you used to login to the samples**
+
 # How to build
 
 Building the library is super simple. All you need is `Visual Studio 2022` or any other C#-capable IDE like `JetBrains Rider`.
