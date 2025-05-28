@@ -12,6 +12,7 @@ namespace pr0sharp.DataTypes
         public int Comments180 { get; set; }
         public int Uploads180 { get; set; }
         public int Votes { get; set; }
+
         [JsonConverter(typeof(BoolConverter))]
         [JsonPropertyName("Age")]
         public bool MinimumAccountAgeReached { get; set; }

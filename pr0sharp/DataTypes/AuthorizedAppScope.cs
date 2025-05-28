@@ -1,8 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace pr0sharp.DataTypes
 {
     public class AuthorizedAppScope
     {
-        public string Scope { get; set; } = string.Empty;
+        [JsonPropertyName("Scope")]
+        public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
     }
 }

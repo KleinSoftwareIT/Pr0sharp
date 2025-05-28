@@ -5,7 +5,9 @@ namespace pr0sharp.DataTypes
 {
     public class BanInfo
     {
-        public bool Banned { get; set; }
+        [JsonPropertyName("Banned")]
+        [JsonConverter(typeof(BoolConverter))]
+        public bool IsBanned { get; set; }
 
         [JsonConverter(typeof(UnixTimestampConverter))]
         public DateTime? BannedUntil { get; set; }

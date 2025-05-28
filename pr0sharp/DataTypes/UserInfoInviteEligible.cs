@@ -11,7 +11,9 @@ namespace pr0sharp.DataTypes
         public CurrentAndRequiredRequirement TotalUploads { get; set; } = null!;
         public CurrentAndRequiredRequirement CommentsWindow180 { get; set; } = null!;
         public CurrentAndRequiredRequirement UploadsWindow180 { get; set; } = null!;
-        public CurrentAndRequiredRequirement Score { get; set; } = null!;
+
+        [JsonPropertyName("Score")]
+        public CurrentAndRequiredRequirement BenisRequired { get; set; } = null!;
 
         [JsonConverter(typeof(UnixTimestampConverter))]
         public DateTime NextRoundDate { get; set; }

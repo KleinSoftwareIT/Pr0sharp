@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using pr0sharp.Converters;
+using pr0sharp.Enums;
 
 namespace pr0sharp.DataTypes
 {
@@ -7,7 +8,9 @@ namespace pr0sharp.DataTypes
     {
         public long Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public int Mark { get; set; }
+
+        [JsonPropertyName("Mark")]
+        public Pr0grammRanks Rank { get; set; }
         public string Email { get; set; } = string.Empty;
 
         [JsonPropertyName("Created")]
