@@ -28,8 +28,8 @@ After somehow getting the library referenced in your project, these are the next
 
 1. Clone the repository
 1. Get client credentials to use for the API. Refer to the above section on how to get those
-1. Add the ClientID and the ClientSecret to `appsettings.development.json` (alternatively, you can add them to `appsettings.json` but take care to not commit the file with credentials in place, they have to remain secret)
-1. Run the Sample project, either via your IDE or on the command line via `dotnet run` while being in the `pr0sharp.Samples` directory.
+1. Add the ClientID and the ClientSecret to `appsettings.development.json` (you need to create that file manually as it is ignored from git by default. Create an empty JSON file with that name, then only copy those keys you want to alter from the main file) Alternatively, you can add them to `appsettings.json` but take care to not commit the file with credentials in place, they have to remain secret
+1. Run the Sample project, either via your IDE or on the command line via `dotnet run` while being in the `pr0sharp.Samples` directory. If you added/modified the `appsettings.development.json` mentioned above, then remember to run the samples in Debug configuration or else the values won't get picked up.
 1. Your browser should now open where you can login with pr0gramm using your account. **Notice that every action you take on the samples can potentially affect the pr0gramm.com account you used to login to the samples**
 
 # How to build
