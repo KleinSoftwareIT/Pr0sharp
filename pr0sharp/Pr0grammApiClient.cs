@@ -15,7 +15,7 @@ namespace pr0sharp
                 BaseAddress = new(baseAddress),
             };
 
-            _httpClient.DefaultRequestHeaders.Add("User-Agent", $"keyb0x.Pr0grammApi/{ThisAssembly.AssemblyInformationalVersion}");
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", $"pr0sharp.Pr0grammApi/{ThisAssembly.AssemblyInformationalVersion}");
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
         }
 

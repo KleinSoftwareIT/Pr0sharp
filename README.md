@@ -21,7 +21,7 @@ After somehow getting the library referenced in your project, these are the next
 
 1. Get yourself some API credentials to use. For more information on how to do that, see the official documentation located [here](https://github.com/pr0gramm-com/api-docs/blob/master/OAuth.md)
 2. Create the url to start the OAuth flow, then follow through the authentication process. There are other libraries like `Duende.IdentityModel` which can help with this step. Make sure to set the scope(s) according to which data you want to retrieve from the API. At the end of the authentication flow you will obtain an access token. This will be the key for using the API, so store it securely.
-3. Create a new instance of `Pr0sharp.Pr0grammApiClient` and pass the obtained `AccessToken` as part of the constructor. The client will now configure everything necessary to successfully call any API endpoint (in accordance with the requested scopes, which will not be checked by the client)
+3. Create a new instance of `pr0sharp.Pr0grammApiClient` and pass the obtained `AccessToken` as part of the constructor. The client will now configure everything necessary to successfully call any API endpoint (in accordance with the requested scopes, which will not be checked by the client)
 4. Call any provided method, passing required arguments. If everything is done correctly, the respective response object will hold the requested data for further processing
 
 # How to build
